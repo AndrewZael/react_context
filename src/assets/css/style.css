@@ -20,3 +20,6 @@
 .photo .info-photo{
     z-index: 1;
 }
+.photo .favorite{
+    cursor: pointer;
+}

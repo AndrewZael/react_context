@@ -3,6 +3,12 @@ import { Blurhash } from "react-blurhash";
 
 const Photo = (props) => {
   const [blurImg, setBlurImg] = useState(true);
+  const [fav, setFav] = useState(false);
+
+  const setfavorite = () => {
+    setFav(!fav);
+  }
+
   return (
     <article className={`photo position-relative ${props.main ? 'photo-main overflow-hidden' : ''}`}>
         { blurImg && 
@@ -12,8 +18,8 @@ const Photo = (props) => {
             width="100%" 
             height={300} /> 
         }
-        <div className="info-photo position-absolute bottom-0 start-0 p-3 z-1 text-light w-100">
-          <div className="d-flex align-items-center">
+        <div className="info-photo align-items-end justify-content-between d-flex position-absolute bottom-0 start-0 px-3 py-4 gap-3 z-1 text-light w-100">
+          <div className="d-flex align-items-start">
             <img 
               src={props.photo.user.profile_image} 
               alt={props.photo.user.name} className="rounded-circle" />
@@ -27,12 +33,15 @@ const Photo = (props) => {
                   </a> : null
                 }
               </small>
+              { props.photo.description ?
+                <p className="mt-2 mb-0 small">{props.photo.description}</p> : null
+              }
             </div>
           </div>
-          {
-            props.photo.description ?
-              <p className="mt-2 mb-0 small">{props.photo.description}</p> : null
-          }
+          <span onClick={() => setfavorite()} 
+          className={`material-icons favorite ${fav && 'text-danger'}`}>
+            {fav ? 'favorite' : 'favorite_border'}
+          </span>
         </div>
         <img src={props.main ? props.photo.urls.regular : props.photo.urls.small} 
             alt={props.photo.alt_description} 
