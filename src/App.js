@@ -15,10 +15,17 @@ function App() {
       <>
         <PhotosContext.Provider value={{photos, setPhotos, photosFavorites, setPhotosFavorites}}>
           <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/favorites' element={<Favorites />} />
-            </Routes>
+            <section className="row g-1 mx-0">
+              <nav className="col-md-4 col-xl-3 col-xxl-2 bg-black">
+
+              </nav>
+              <main className="col-md-8 col-xl-9 col-xxl-10">
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/favorites' element={<Favorites />} />
+                </Routes>
+              </main>
+            </section>
           </BrowserRouter>
         </PhotosContext.Provider>
       </>    

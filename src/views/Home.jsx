@@ -34,7 +34,7 @@ const Home = () => {
         }
         newList.push(newObject);
       });
-      setPhotos(newList);
+      setPhotos([...newList]);
     }).catch(error => {
       console.log(error);
     });
@@ -48,7 +48,8 @@ const Home = () => {
 
   return (
     <section title="Home" data-masonry='{"percentPosition": true }'>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 540: 2, 767: 3, 920: 4}}>
+      { photos.length > 0 && <Photo photo={photos[Math.floor(Math.random() * photos.length)]} main={true} />}
+      <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 540: 2, 767: 3, 920: 4}}>
         <Masonry gutter="2px">
           {
             photos.map(photo => (

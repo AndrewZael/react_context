@@ -3,9 +3,8 @@ import { Blurhash } from "react-blurhash";
 
 const Photo = (props) => {
   const [blurImg, setBlurImg] = useState(true);
-
   return (
-    <article className="photo position-relative">
+    <article className={`photo position-relative ${props.main ? 'photo-main overflow-hidden' : ''}`}>
         { blurImg && 
         <Blurhash 
             className="min-h-100"  
@@ -35,9 +34,11 @@ const Photo = (props) => {
               <p className="mt-2 mb-0 small">{props.photo.description}</p> : null
           }
         </div>
-        <img src={props.photo.urls.small} 
+        <img src={props.main ? props.photo.urls.regular : props.photo.urls.small} 
             alt={props.photo.alt_description} 
-            className={`position-relative w-100 ${blurImg ? 'd-none' : 'd-block'}`} onLoad={() => setBlurImg(false)} />
+            className={`w-100 
+            ${blurImg ? 'd-none' : 'd-block'} 
+            ${props.main && 'position-absolute top-0 bottom-0 my-auto'}`} onLoad={() => setBlurImg(false)} />
     </article>
   )
 }
