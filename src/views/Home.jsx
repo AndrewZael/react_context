@@ -1,6 +1,5 @@
-import React from 'react'
-import { useContext } from 'react';
-import { useEffect } from 'react'
+import React, { useState } from 'react'
+import { useContext, useEffect } from 'react';
 import Photo from '../components/Photo';
 import PhotosContext from '../contexts/Photos.conext';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
@@ -8,6 +7,7 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 const Home = () => {
   
   const {photos, setPhotos} = useContext(PhotosContext);
+  const [featured, setFeatured] = useState(0);
 
   useEffect(() => {
     getPhotos().then(response => {
@@ -40,6 +40,10 @@ const Home = () => {
     });
   },[]);
 
+  useEffect(() => {
+    setFeatured(Math.floor(Math.random() * photos.length));
+  },[photos]);
+
   const getPhotos = async () => {
     const getData = await fetch('https://api.unsplash.com/search/photos?client_id=5ku3P6bz7HJYXet_sMahAnmqwqDUc6NA7STlf6avwHE&per_page=20&query=animals-wild');
     const data = await getData.json();
@@ -48,7 +52,7 @@ const Home = () => {
 
   return (
     <section title="Home" data-masonry='{"percentPosition": true }'>
-      { photos.length > 0 && <Photo photo={photos[Math.floor(Math.random() * photos.length)]} main={true} />}
+      { photos.length > 0 && <Photo photo={photos[featured]} main={true} />}
       <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 540: 2, 767: 3, 920: 4}}>
         <Masonry gutter="2px">
           {

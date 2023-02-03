@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Blurhash } from "react-blurhash";
+import PhotosContext from '../contexts/Photos.conext';
 
 const Photo = (props) => {
+
   const [blurImg, setBlurImg] = useState(true);
   const [fav, setFav] = useState(false);
+  const {photos} = useContext(PhotosContext);
+  const {photosFavorites, setPhotosFavorites} = useContext(PhotosContext);
 
-  const setfavorite = () => {
+  const setfavorite = (id) => {
+    const photofav = photos.find(photo => photo.id === id);
+    setPhotosFavorites([...photosFavorites, photofav]);
     setFav(!fav);
   }
 
@@ -38,7 +44,7 @@ const Photo = (props) => {
               }
             </div>
           </div>
-          <span onClick={() => setfavorite()} 
+          <span onClick={() => setfavorite(props.photo.id)} 
           className={`material-icons favorite ${fav && 'text-danger'}`}>
             {fav ? 'favorite' : 'favorite_border'}
           </span>
