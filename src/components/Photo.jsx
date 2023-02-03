@@ -5,14 +5,15 @@ import PhotosContext from '../contexts/Photos.conext';
 const Photo = (props) => {
 
   const [blurImg, setBlurImg] = useState(true);
-  const [fav, setFav] = useState(false);
-  const {photos} = useContext(PhotosContext);
-  const {photosFavorites, setPhotosFavorites} = useContext(PhotosContext);
+  const {photos, setPhotos} = useContext(PhotosContext);
+  const {setPhotosFavorites} = useContext(PhotosContext);
 
   const setfavorite = (id) => {
-    const photofav = photos.find(photo => photo.id === id);
-    setPhotosFavorites([...photosFavorites, photofav]);
-    setFav(!fav);
+      const newList = [...photos];
+      const photoId = photos.findIndex(photo => photo.id === id);
+      newList[photoId].favorite = !newList[photoId].favorite;
+      setPhotos([...newList]);
+      setPhotosFavorites(photos.filter(photo => photo.favorite));
   }
 
   return (
@@ -45,8 +46,8 @@ const Photo = (props) => {
             </div>
           </div>
           <span onClick={() => setfavorite(props.photo.id)} 
-          className={`material-icons favorite ${fav && 'text-danger'}`}>
-            {fav ? 'favorite' : 'favorite_border'}
+          className={`material-icons favorite ${props.photo.favorite && 'text-danger'}`}>
+            {props.photo.favorite ? 'favorite' : 'favorite_border'}
           </span>
         </div>
         <img src={props.main ? props.photo.urls.regular : props.photo.urls.small} 

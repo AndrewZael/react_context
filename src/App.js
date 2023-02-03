@@ -11,15 +11,16 @@ function App() {
 
   const [photos, setPhotos] = useState([]);
   const [photosFavorites, setPhotosFavorites] = useState([]);
+  const [init, setInit] = useState(false);
   
   return (
       <>
-        <PhotosContext.Provider value={{photos, setPhotos, photosFavorites, setPhotosFavorites}}>
+        <PhotosContext.Provider value={{photos, setPhotos, photosFavorites, setPhotosFavorites, init, setInit}}>
           <BrowserRouter>
             <section className="row g-1 mx-0 min-vh-100">
               <nav className="col-md-4 col-xl-3 col-xxl-2 bg-dark">
                 <div className="position-sticky top-0 start-0">
-                  <img src={wildWolf} alt="Wild Wolf" width="100%" />
+                  <img src={wildWolf} alt="Wild Wolf" width="100%" className="float-start" />
                   <ul className="py-4 ps-0 m-0">
                     <li>
                       <NavLink to="/" className="btn btn-dark border-0 w-100 text-start rounded-0 py-3">
