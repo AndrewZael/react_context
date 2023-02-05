@@ -8,6 +8,7 @@ const Home = () => {
   
   const {photos, setPhotos} = useContext(PhotosContext);
   const {init, setInit} = useContext(PhotosContext);
+  
   const [featured, setFeatured] = useState(0);
   const [random, setRandom] = useState(false);
 
@@ -62,7 +63,7 @@ const Home = () => {
   return (
     <section title="Home" data-masonry='{"percentPosition": true }'>
       { photos.length > 0 && <Photo photo={photos[featured]} main={true} />}
-      <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 540: 2, 767: 3, 920: 4}}>
+      <ResponsiveMasonry className="mt-md-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
         <Masonry gutter="1px">
           {
             photos.map(photo => (

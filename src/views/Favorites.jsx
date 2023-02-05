@@ -5,11 +5,11 @@ import Photo from '../components/Photo';
 
 const Favorites = () => {
 
-  const {photosFavorites, setPhotosFavorites} = useContext(PhotosContext);
+  const {photosFavorites} = useContext(PhotosContext);
 
   return (
     <section title="Tus favoritos" data-masonry='{"percentPosition": true }'>
-      <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 540: 2, 767: 3, 920: 4}}>
+      <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
         <Masonry gutter="2px">
           {
             photosFavorites.map(photo => (

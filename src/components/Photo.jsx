@@ -5,6 +5,7 @@ import PhotosContext from '../contexts/Photos.conext';
 const Photo = (props) => {
 
   const [blurImg, setBlurImg] = useState(true);
+
   const {photos, setPhotos} = useContext(PhotosContext);
   const {setPhotosFavorites} = useContext(PhotosContext);
 
@@ -41,7 +42,9 @@ const Photo = (props) => {
                 }
               </small>
               { props.photo.description ?
-                <p className="mt-2 mb-0 small">{props.photo.description}</p> : null
+                <p className="mt-2 mb-0 small">{
+                  `${props.photo.description.substring(0, 80)}...`
+                }</p> : null
               }
             </div>
           </div>
@@ -54,7 +57,7 @@ const Photo = (props) => {
             alt={props.photo.alt_description} 
             className={`w-100 
             ${blurImg ? 'd-none' : 'd-block'} 
-            ${props.main && 'position-absolute top-0 bottom-0 my-auto'}`} onLoad={() => setBlurImg(false)} />
+            ${props.main && 'position-absolute top-0 bottom-0'}`} onLoad={() => setBlurImg(false)} />
     </article>
   )
 }
