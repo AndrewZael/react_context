@@ -18,7 +18,7 @@ const Home = () => {
     if(!init){
       getPhotos().then(response => {
         const newList = [];
-        response.map(item => {
+        response.forEach(item => {
           const newObject = {
             id: item.id,
             favorite: false,
@@ -42,19 +42,19 @@ const Home = () => {
         });
         setPhotos([...newList]);
       }).catch(error => {
-        
+        console.log(error);
       });
-      setInit(true);
+      setInit(true); 
     }
 
-  },[]);
+  },[init, setInit, setPhotos]);
 
   useEffect(() => {
       if(photos.length > 0 && !random){
         setFeatured(Math.floor(Math.random() * photos.length))
         setRandom(true);
       }
-  },[photos]);
+  },[photos, random]);
 
   const getPhotos = async () => {
     const getData = await fetch('https://api.unsplash.com/search/photos?client_id=5ku3P6bz7HJYXet_sMahAnmqwqDUc6NA7STlf6avwHE&per_page=20&query=animals-wild');
