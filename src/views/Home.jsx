@@ -3,6 +3,8 @@ import { useContext, useEffect } from 'react';
 import Photo from '../components/Photo';
 import PhotosContext from '../contexts/Photos.conext';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import Message from '../components/Message';
+import wolf from '../assets/img/wolf.svg';
 
 const Home = () => {
   
@@ -40,7 +42,7 @@ const Home = () => {
         });
         setPhotos([...newList]);
       }).catch(error => {
-        console.log(error);
+        
       });
       setInit(true);
     }
@@ -63,7 +65,8 @@ const Home = () => {
   return (
     <section title="Home" data-masonry='{"percentPosition": true }'>
       { photos.length > 0 && <Photo photo={photos[featured]} main={true} />}
-      <ResponsiveMasonry className="mt-md-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
+      
+      { photos.length > 0 ? <ResponsiveMasonry className="mt-md-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
         <Masonry gutter="1px">
           {
             photos.map(photo => (
@@ -71,7 +74,11 @@ const Home = () => {
             ))
           }
         </Masonry>
-      </ResponsiveMasonry>
+      </ResponsiveMasonry> : 
+      <Message 
+      img={wolf}
+      title="Un error ha ocurrido"
+      message="Lo sentimos, tenemos un problema al cargar la información, por favor inténtalo nuevamente" />}
     </section>
   )
 }

@@ -33,6 +33,14 @@ nav{
     .photo-main{
         height: 50vh;
     }
+    .message-img{
+        width: 200px;
+    }
+}
+@media screen and (max-width:768px){
+    .message-img{
+        width: 80%;
+    }
 }
 @media screen and (min-width:1200px){
     .photo-main{
