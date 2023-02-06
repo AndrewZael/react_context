@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import PhotosContext from '../contexts/Photos.conext';
 import Photo from '../components/Photo';
@@ -7,7 +7,11 @@ import wolf from '../assets/img/wolf.svg';
 
 const Favorites = () => {
 
-  const {photosFavorites} = useContext(PhotosContext);
+  const { photosFavorites, setNewFav } = useContext(PhotosContext);
+
+  useEffect(() => {
+    setNewFav(false);
+  }, []);
 
   return (
     <section title="Tus favoritos" data-masonry='{"percentPosition": true }'>

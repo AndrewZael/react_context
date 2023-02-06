@@ -2,7 +2,7 @@ import PhotosContext from './contexts/Photos.conext';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './views/Home';
 import Favorites from './views/Favorites';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
 import wildWolf from './assets/img/wild-wolf.png';
@@ -12,13 +12,15 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [photosFavorites, setPhotosFavorites] = useState([]);
   const [init, setInit] = useState(false);
+  const [newFav, setNewFav] = useState(false);
   const shareState = {
     photos, 
     setPhotos, 
     photosFavorites, 
     setPhotosFavorites, 
     init, 
-    setInit
+    setInit,
+    setNewFav
   }
   
   return (
@@ -36,8 +38,9 @@ function App() {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/favorites" className="btn btn-dark border-0 w-100 text-start rounded-0 py-3">
-                        Favoritos
+                      <NavLink to="/favorites" className="btn btn-dark border-0 w-100 text-start rounded-0 py-3 d-flex align-items-center">
+                        Favoritos 
+                        { (newFav && photosFavorites.length > 0) && <span className="bg-danger rounded-circle p-1 ms-2 mt-1"></span> }
                       </NavLink>
                     </li>
                   </ul>

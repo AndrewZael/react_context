@@ -6,8 +6,13 @@ const Photo = (props) => {
 
   const [blurImg, setBlurImg] = useState(true);
 
-  const {photos, setPhotos} = useContext(PhotosContext);
-  const {setPhotosFavorites} = useContext(PhotosContext);
+  const {
+    photos,
+    photosFavorites, 
+    setPhotos,
+    setPhotosFavorites,
+    setNewFav
+  } = useContext(PhotosContext);
 
   const setfavorite = (id) => {
       const newList = [...photos];
@@ -15,6 +20,9 @@ const Photo = (props) => {
       newList[photoId].favorite = !newList[photoId].favorite;
       setPhotos([...newList]);
       setPhotosFavorites(photos.filter(photo => photo.favorite));
+
+      newList[photoId].favorite && setNewFav(true);
+
   }
 
   return (
