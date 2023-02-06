@@ -30,6 +30,9 @@ nav{
     cursor: pointer;
 }
 @media screen and (min-width:768px){
+    nav{
+        min-height: 100vh;
+    }
     .photo-main{
         height: 50vh;
     }

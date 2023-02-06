@@ -66,7 +66,7 @@ const Home = () => {
     <section title="Home" data-masonry='{"percentPosition": true }'>
       { photos.length > 0 && <Photo photo={photos[featured]} main={true} />}
       
-      { photos.length > 0 ? <ResponsiveMasonry className="mt-md-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
+      { photos.length > 0 ? <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
         <Masonry gutter="1px">
           {
             photos.map(photo => (

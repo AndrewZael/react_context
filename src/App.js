@@ -25,11 +25,11 @@ function App() {
       <>
         <PhotosContext.Provider value={shareState}>
           <BrowserRouter>
-            <section className="row g-1 mx-0 min-vh-100">
+            <section className="row g-1 mx-0 align-items-start">
               <nav className="col-md-4 col-xl-3 col-xxl-2 bg-dark position-sticky top-0 start-0">
                 <div className="position-sticky top-0 start-0 d-flex flex-column align-items-center">
-                  <img src={wildWolf} alt="Wild Wolf" className="float-start mt-md-4 logo" />
-                  <ul className="pt-3 ps-0 m-0 w-100">
+                  <img src={wildWolf} alt="Wild Wolf" className="float-start mt-md-4 logo py-2" />
+                  <ul className="ps-0 m-0 w-100">
                     <li>
                       <NavLink to="/" className="btn btn-dark border-0 w-100 text-start rounded-0 py-3">
                         Home
@@ -43,7 +43,7 @@ function App() {
                   </ul>
                 </div>
               </nav>
-              <main className="col-md-8 col-xl-9 col-xxl-10">
+              <main className="col-md-8 col-xl-9 col-xxl-10 px-0">
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/favorites' element={<Favorites />} />

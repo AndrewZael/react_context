@@ -11,7 +11,7 @@ const Favorites = () => {
 
   return (
     <section title="Tus favoritos" data-masonry='{"percentPosition": true }'>
-      { photosFavorites.length > 0 ? <ResponsiveMasonry className="mt-1" columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
+      { photosFavorites.length > 0 ? <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 768: 2, 1400: 3, 1700: 4}}>
         <Masonry gutter="2px">
           {
             photosFavorites.map(photo => (
