@@ -6,9 +6,10 @@ const Photo = (props) => {
 
   const [blurImg, setBlurImg] = useState(true);
 
+  console.log(props.photo.color);
+
   const {
     photos,
-    photosFavorites, 
     setPhotos,
     setPhotosFavorites,
     setNewFav
@@ -51,7 +52,7 @@ const Photo = (props) => {
               </small>
               { props.photo.description ?
                 <p className="mt-2 mb-0 small">{
-                  `${props.photo.description.substring(0, 80)}...`
+                  `${ props.photo.description.length > 80 ? props.photo.description.substring(0, 80) + '...' : props.photo.description}`
                 }</p> : null
               }
             </div>
@@ -65,7 +66,8 @@ const Photo = (props) => {
             alt={props.photo.alt_description} 
             className={`w-100 
             ${blurImg ? 'd-none' : 'd-block'} 
-            ${props.main && 'position-absolute top-0 bottom-0 my-md-auto'}`} onLoad={() => setBlurImg(false)} />
+            ${props.main && 'position-absolute top-0 bottom-0 my-md-auto'}`} 
+            onLoad={() => setBlurImg(false)} />
     </article>
   )
 }

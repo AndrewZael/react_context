@@ -22,7 +22,6 @@ const Home = () => {
           const newObject = {
             id: item.id,
             favorite: false,
-            color: item.color,
             blur_hash: item.blur_hash,
             description: item.description,
             alt_description: item.alt_description,
