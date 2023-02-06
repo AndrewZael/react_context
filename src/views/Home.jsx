@@ -8,8 +8,12 @@ import wolf from '../assets/img/wolf.svg';
 
 const Home = () => {
   
-  const {photos, setPhotos} = useContext(PhotosContext);
-  const {init, setInit} = useContext(PhotosContext);
+  const {
+    photos, 
+    setPhotos,
+    init,
+    setInit
+  } = useContext(PhotosContext);
   
   const [featured, setFeatured] = useState(0);
   const [random, setRandom] = useState(false);

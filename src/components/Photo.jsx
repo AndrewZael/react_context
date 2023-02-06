@@ -5,9 +5,6 @@ import PhotosContext from '../contexts/Photos.conext';
 const Photo = (props) => {
 
   const [blurImg, setBlurImg] = useState(true);
-
-  console.log(props.photo.color);
-
   const {
     photos,
     setPhotos,
@@ -21,9 +18,7 @@ const Photo = (props) => {
       newList[photoId].favorite = !newList[photoId].favorite;
       setPhotos([...newList]);
       setPhotosFavorites(photos.filter(photo => photo.favorite));
-
       newList[photoId].favorite && setNewFav(true);
-
   }
 
   return (

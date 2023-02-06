@@ -1,3 +1,3 @@
 import { createContext } from "react";
-const PhotosContext = createContext([]);
+const PhotosContext = createContext();
 export default PhotosContext;
