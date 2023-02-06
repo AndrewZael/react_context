@@ -11,7 +11,7 @@ const Favorites = () => {
 
   useEffect(() => {
     setNewFav(false);
-  }, []);
+  }, [setNewFav]);
 
   return (
     <section title="Tus favoritos" data-masonry='{"percentPosition": true }'>

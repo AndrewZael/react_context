@@ -2,7 +2,7 @@ import PhotosContext from './contexts/Photos.conext';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './views/Home';
 import Favorites from './views/Favorites';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.css';
 import wildWolf from './assets/img/wild-wolf.png';
