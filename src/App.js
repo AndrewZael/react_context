@@ -46,7 +46,7 @@ function App() {
                   </ul>
                 </div>
               </nav>
-              <main className="col-md-8 col-xl-9 col-xxl-10 px-0">
+              <main className="col-md-8 col-xl-9 col-xxl-10 px-0 mt-0">
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/favorites' element={<Favorites />} />

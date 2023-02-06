@@ -10,6 +10,12 @@ nav{
 .min-h-100{
     min-height: 100%;
 }
+.photo-main{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 60vh;
+}
 .photo::before{
     background: -moz-linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%);
     background: -webkit-linear-gradient(to top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%);
@@ -35,9 +41,6 @@ nav{
 @media screen and (min-width:768px){
     nav{
         min-height: 100vh;
-    }
-    .photo-main{
-        height: 50vh;
     }
     .message-img{
         width: 200px;

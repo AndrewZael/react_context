@@ -27,8 +27,8 @@ const Photo = (props) => {
   }
 
   return (
-    <article className={`photo position-relative ${props.main ? 'photo-main overflow-hidden' : ''}`}>
-        { blurImg && 
+    <article className={`photo position-relative ${props.main ? 'photo-main overflow-hidden' : ''}`} style={{ backgroundImage: `url(${props.photo.urls.regular})` }}>
+        { (blurImg && !props.main) && 
         <Blurhash 
             className="min-h-100"  
             hash={props.photo.blur_hash} 
@@ -62,12 +62,14 @@ const Photo = (props) => {
             {props.photo.favorite ? 'favorite' : 'favorite_border'}
           </span>
         </div>
-        <img src={props.main ? props.photo.urls.regular : props.photo.urls.small} 
+
+        {!props.main && <img src={props.photo.urls.small} 
             alt={props.photo.alt_description} 
             className={`w-100 
             ${blurImg ? 'd-none' : 'd-block'} 
             ${props.main && 'position-absolute top-0 bottom-0 my-md-auto'}`} 
             onLoad={() => setBlurImg(false)} />
+          }
     </article>
   )
 }
